@@ -1,5 +1,12 @@
 import numpy as np
 
+D = 1       # diffusion coeff of the cancer-cells
+Dp = 0.01   # diffusion coeff of the chemo-attractant
+mu = 1      # uptake parameter of the chemo-attractant by the individual cancer-cells
+dx = 1e-2   # dx and dt are for the numerical solutions of the PDE for dispersion of chemoattractant
+dt = 1e-5   #
+Dc = 0.01
+
 
 def single_lap(x, i, j, dx=1):
     return (x[i + 1, j] + x[i - 1, j] + x[i, j + 1] + x[i, j - 1] - 4 * x[i, j]) / (dx ** 2)
@@ -25,13 +32,18 @@ class Tumor:
         self.next_id += 1
 
     def cancer_at(self, x, y):
-        return (x, y) in self.cells.keys()
+        if (x, y) in self.cells.keys() and not cells[(x,y)].dead:
+                return True
+        return False
 
     def cancer_cells(self):
         return sorted(self.cells.values(), key=lambda cel: cel.id)
 
     def move(self, old, new):
         self.cells[new] = self.cells.pop(old)
+
+    def size(self):
+        return len(self.cells)
 
 
 class CancerCell:
@@ -43,11 +55,15 @@ class CancerCell:
         self.stayed = False
         self.age = 0
         self.tumor.add(self)
+        self.dead = False
+
+    def consumption(self):
+        return 0.57
 
     def mitosis(self):
         if self.age >= self.PROLIF_AGE:
             free_spots = []
-            potential_spots = ((self.x+1, self.y), (self.x-1, self.y), (self.x, self.y+1),(self.x, self.y-1))
+            potential_spots = ((self.x+1, self.y), (self.x-1, self.y), (self.x, self.y+1), (self.x, self.y-1))
 
             for spot in potential_spots:
                 if not self.tumor.cancer_at(spot[0], spot[1]):
@@ -56,15 +72,21 @@ class CancerCell:
             if len(free_spots) == 0:
                 return False
 
-            new_spot = np.random.choice(potential_spots)
+            new_spot = free_spots[np.random.randint(0, len(free_spots))]
 
             CancerCell(new_spot[0], new_spot[1], self.tumor)
             self.tumor.add(self)
             return True
 
-    def life_cycle(self):
-        self.age += 1
-        reproduced = self.mitosis()
+    def life_cycle(self, o2):
+        if o2[c.x, c.y] == 0:
+            self.die()
+        else:
+            self.age += 1
+            reproduced = self.mitosis()
+
+    def die(self):
+        self.dead = True
 
     def move(self, phi):
         """
@@ -72,18 +94,13 @@ class CancerCell:
         :param phi:
         :return:
         """
-        Cim1 = D - mu * 0.25 * (phi[self.x + 1, self.y] - phi[self.x - 1, self.y])
-        Cip1 = D + mu * 0.25 * (phi[self.x + 1, self.y] - phi[self.x - 1, self.y])
-        Cjm1 = D - mu * 0.25 * (phi[self.x, self.y + 1] - phi[self.x, self.y - 1])
-        Cjp1 = D + mu * 0.25 * (phi[self.x, self.y + 1] - phi[self.x, self.y - 1])
-        Cs = dx ** 2 / dt - 4 * D + mu * single_lap(phi, self.x, self.y)
+        c_left = (D - mu * 0.25 * (phi[self.x + 1, self.y] - phi[self.x - 1, self.y])) * (dt/dx**2)
+        c_right = (D + mu * 0.25 * (phi[self.x + 1, self.y] - phi[self.x - 1, self.y])) * (dt/dx**2)
+        c_down = (D - mu * 0.25 * (phi[self.x, self.y + 1] - phi[self.x, self.y - 1])) * (dt/dx**2)
+        c_up = (D + mu * 0.25 * (phi[self.x, self.y + 1] - phi[self.x, self.y - 1])) * (dt/dx**2)
+        c_stay = 1 - dt/(dx ** 2) * (4 * D + mu * single_lap(phi, self.x, self.y))
 
-        """
-        if self.stayed:
-            Cs = 0
-        """
-
-        w8s = [Cim1, Cip1, Cjm1, Cjp1, Cs]
+        w8s = [c_left, c_right, c_down, c_up, c_stay]
 
         directions = ((self.x - 1, self.y), (self.x + 1, self.y), (self.x, self.y - 1),
                       (self.x, self.y + 1), (self.x, self.y))
