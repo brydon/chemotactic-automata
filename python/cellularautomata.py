@@ -22,7 +22,7 @@ images_folder = "../images/"
 def plotit(frame=-1):
     c_array = np.zeros((N, N))
     for cell in tumor.cancer_cells():
-        c_array[cell.x, cell.y] = 1
+        c_array[cell.x, cell.y] = 0.5 if cell.dead else 1
 
     plt.subplot(211)
     plt.imshow(c_array)
