@@ -22,10 +22,17 @@ title = "twotumors"
 class Tumor:
     def __init__(self):
         self.cells = {}
+        self.next_id = 0
+
+    def age(self):
+        for cell in self.cells:
+            cell.age += 1
 
     def add(self, cell):
         self.cells[(cell.x, cell.y)] = cell
         cell.tumor = self
+        cell.id = self.next_id
+        self.next_id += 1
 
     def cancer_at(self, x, y):
         return (x, y) in self.cells.keys()
@@ -38,10 +45,15 @@ class Tumor:
 
 
 class CancerCell:
-    def __init__(self, x, y):
+    def __init__(self, x, y, tum=None):
         self.x, self.y = x, y
-        self.tumor = None
+        self.tumor = tum
         self.stayed = False
+        self.age = 0
+        self.tumor.add(self)
+
+    def mitosis(self, phi):
+
 
     def move(self, phi):
         """
@@ -141,14 +153,13 @@ phi = np.zeros((N, N)) # The chemo-attractant field
 
 tumor = Tumor() # Collection of cancer cells.
 
-cancer_cells = [CancerCell(N / 2-25, N / 2-25), CancerCell(N / 2-25, N / 2 - 1-25), CancerCell(N / 2 - 1-25, N / 2 - 1-25),
-                CancerCell(N / 2 - 1-25, N / 2-25)]
+cancer_cells = [CancerCell(N / 2-25, N / 2-25, tumor), CancerCell(N / 2-25, N / 2 - 1-25, tumor),
+                CancerCell(N / 2 - 1-25, N / 2 - 1-25, tumor), CancerCell(N / 2 - 1-25, N / 2-25, tumor)]
 
-cancer_cells += [CancerCell(N / 2+25, N / 2+25), CancerCell(N / 2+25, N / 2 - 1+25), CancerCell(N / 2 - 1+25, N / 2 - 1+25),
-                CancerCell(N / 2 - 1+25, N / 2+25)]
+cancer_cells += [CancerCell(N / 2+25, N / 2+25, tumor), CancerCell(N / 2+25, N / 2 - 1+25, tumor),
+                 CancerCell(N / 2 - 1+25, N / 2 - 1+25, tumor), CancerCell(N / 2 - 1+25, N / 2+25, tumor)]
 
 for c in cancer_cells:
-    tumor.add(c)
     phi[c.x, c.y] = 1.0
 
 for t in range(50):
@@ -166,6 +177,8 @@ for t in range(50):
     for c in tumor.cancer_cells():
         c.move(phi)
         phi[c.x, c.y] = 1.0
+
+    tumor.age()
 
     plotit(t)
 
