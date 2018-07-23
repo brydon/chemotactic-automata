@@ -12,9 +12,10 @@ import time
 import matplotlib.pyplot as plt
 import sys
 from cancer import *
+from multiprocessing import Pool
 
-#title = sys.argv[-1]
-title = "twotumors"
+title = sys.argv[-1]
+#title = "twotumors"
 images_folder = "../images/"
 
 
@@ -68,19 +69,30 @@ cancer_cells += [CancerCell(N / 2+25, N / 2+25, tumor), CancerCell(N / 2+25, N /
 for c in cancer_cells:
     phi[c.x, c.y] = 1.0
 
+
+def dispersion(arg):
+    print "Starting",arg
+    if arg == "ca":
+        for _ in range(int(1 / float(dt))):
+            phi[1:-1, 1:-1] += Dp * lap(phi) * (dt / dx ** 2)
+            for c in tumor.cancer_cells():
+                phi[c.x, c.y] = 1.0
+    elif arg == "o2":
+        for _ in range(int(1 /float(dt))):
+            o2[1:-1, 1:-1] += Dc * lap(o2) * (dt / dx ** 2)
+            for c in tumor.cancer_cells():
+                o2[c.x, c.y] = np.max(o2[c.x, c.y] - c.consumption(), 0)
+
+p = Pool()
+
 for t in range(50):
     st = time.time()
     print "Iteration:", t
 
     """ Dispersion of the chemo-attractant. """
-    for _ in range(int(1/float(dt))):
-        phi[1:-1, 1:-1] += Dp * lap(phi) * (dt / dx ** 2)
-        o2[1:-1, 1:-1] += Dc * lap(o2) * (dt / dx ** 2)
-        for c in tumor.cancer_cells():
-            phi[c.x, c.y] = 1.0
-            o2[c.x, c.y] = np.max(o2[c.x, c.y] - c.consumption(), 0)
+    p.map(dispersion, ["o2", "ca"])
 
-    print "Updated phi"
+    print "Updated fields"
 
     for c in tumor.cancer_cells():
         c.move(phi)

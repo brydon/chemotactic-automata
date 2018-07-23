@@ -1,11 +1,11 @@
 import numpy as np
 
 D = 1       # diffusion coeff of the cancer-cells
-Dp = 0.01   # diffusion coeff of the chemo-attractant
+Dp = 0.5   # diffusion coeff of the chemo-attractant
 mu = 1      # uptake parameter of the chemo-attractant by the individual cancer-cells
 dx = 1e-2   # dx and dt are for the numerical solutions of the PDE for dispersion of chemoattractant
 dt = 1e-5   #
-Dc = 0.01
+Dc = 0.5
 
 
 def single_lap(x, i, j, dx=1):
@@ -32,7 +32,7 @@ class Tumor:
         self.next_id += 1
 
     def cancer_at(self, x, y):
-        if (x, y) in self.cells.keys() and not cells[(x,y)].dead:
+        if (x, y) in self.cells.keys() and not self.cells[(x, y)].dead:
                 return True
         return False
 
@@ -79,7 +79,7 @@ class CancerCell:
             return True
 
     def life_cycle(self, o2):
-        if o2[c.x, c.y] == 0:
+        if o2[self.x, self.y] == 0:
             self.die()
         else:
             self.age += 1
