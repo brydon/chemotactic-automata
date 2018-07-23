@@ -77,11 +77,13 @@ def dispersion(arg):
             phi[1:-1, 1:-1] += Dp * lap(phi) * (dt / dx ** 2)
             for c in tumor.cancer_cells():
                 phi[c.x, c.y] = 1.0
+        return phi
     elif arg == "o2":
         for _ in range(int(1 /float(dt))):
             o2[1:-1, 1:-1] += Dc * lap(o2) * (dt / dx ** 2)
             for c in tumor.cancer_cells():
-                o2[c.x, c.y] = np.max(o2[c.x, c.y] - c.consumption(), 0)
+                o2[c.x, c.y] = np.max(o2[c.x, c.y] - c.consumption() * dt, 0)
+        return o2
 
 p = Pool()
 
@@ -89,8 +91,10 @@ for t in range(50):
     st = time.time()
     print "Iteration:", t
 
+    print np.linalg.norm(o2)
     """ Dispersion of the chemo-attractant. """
-    p.map(dispersion, ["o2", "ca"])
+    o2, phi = p.map(dispersion, ["o2", "ca"])
+    print np.linalg.norm(o2)
 
     print "Updated fields"
 
