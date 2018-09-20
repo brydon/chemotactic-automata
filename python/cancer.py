@@ -8,6 +8,8 @@ dt = 1e-5   #
 Dc = 0.5
 
 
+
+
 def single_lap(x, i, j, dx=1):
     return (x[i + 1, j] + x[i - 1, j] + x[i, j + 1] + x[i, j - 1] - 4 * x[i, j]) / (dx ** 2)
 
@@ -50,7 +52,7 @@ class CancerCell:
     PROLIF_AGE = 1
 
     def __init__(self, x, y, tum=None):
-        self.x, self.y = x, y
+        self.x, self.y = int(x), int(y)
         self.tumor = tum
         self.stayed = False
         self.age = 0
@@ -66,7 +68,7 @@ class CancerCell:
             potential_spots = ((self.x+1, self.y), (self.x-1, self.y), (self.x, self.y+1), (self.x, self.y-1))
 
             for spot in potential_spots:
-                if not self.tumor.cancer_at(spot[0], spot[1]):
+                if not self.tumor.cancer_at(spot[0], spot[1]) and 0 <= spot[0] < 400 and 0 <= spot[1] < 400:
                     free_spots.append(spot)
 
             if len(free_spots) == 0:
@@ -79,7 +81,7 @@ class CancerCell:
             return True
 
     def life_cycle(self, o2):
-        if o2[self.x, self.y] == 0:
+        if o2[self.x, self.y] <= 10e-5:
             self.die()
         else:
             self.age += 1
@@ -90,10 +92,14 @@ class CancerCell:
 
     def move(self, phi):
         """
-        TBD: Should there be a dx/dt factor in each/most of the Cim terms??
+
         :param phi:
         :return:
         """
+
+        if self.x == 0 or self.x == phi.shape[0] - 1 or self.y == 0 or self.y == phi.shape[1] - 1:
+            return self.x, self.y # Bdary conditions
+
         c_left = (D - mu * 0.25 * (phi[self.x + 1, self.y] - phi[self.x - 1, self.y])) * (dt/dx**2)
         c_right = (D + mu * 0.25 * (phi[self.x + 1, self.y] - phi[self.x - 1, self.y])) * (dt/dx**2)
         c_down = (D - mu * 0.25 * (phi[self.x, self.y + 1] - phi[self.x, self.y - 1])) * (dt/dx**2)

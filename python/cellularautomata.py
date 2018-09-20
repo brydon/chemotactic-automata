@@ -15,7 +15,7 @@ from cancer import *
 from multiprocessing import Pool
 
 title = sys.argv[-1]
-#title = "twotumors"
+title = "ark_anch"
 images_folder = "../images/"
 
 
@@ -24,9 +24,12 @@ def plotit(frame=-1):
     for cell in tumor.cancer_cells():
         c_array[cell.x, cell.y] = 0.5 if cell.dead else 1
 
-    plt.subplot(211)
+    plt.subplot(221)
     plt.imshow(c_array)
-    plt.subplot(212)
+    plt.subplot(222)
+    plt.imshow(o2, cmap="gray")
+    plt.colorbar()
+    plt.subplot(223)
 
     phi_rounded = phi.copy()
     phi_range = np.max(phi_rounded)
@@ -53,37 +56,56 @@ def plotit(frame=-1):
         plt.clf()
 
 
-N = 100     # diameter of the grid.
+N = 400     # diameter of the grid.
 
 phi = np.zeros((N, N))  # The chemo-attractant field
 o2 = np.ones((N, N))
 
 tumor = Tumor()  # Collection of cancer cells.
 
-cancer_cells = [CancerCell(N / 2-25, N / 2-25, tumor), CancerCell(N / 2-25, N / 2 - 1-25, tumor),
-                CancerCell(N / 2 - 1-25, N / 2 - 1-25, tumor), CancerCell(N / 2 - 1-25, N / 2-25, tumor)]
+##############################
+#### Starting Connditions ####
+##############################
 
-cancer_cells += [CancerCell(N / 2+25, N / 2+25, tumor), CancerCell(N / 2+25, N / 2 - 1+25, tumor),
-                 CancerCell(N / 2 - 1+25, N / 2 - 1+25, tumor), CancerCell(N / 2 - 1+25, N / 2+25, tumor)]
+# Single, central solid tumour site
+starting_positions = [(N/2, N/2), (N/2 - 1, N/2), (N/2, N/2 - 1), (N/2 - 1, N/2 - 1)]
+
+# Two solid tumour sites
+starting_positions = [(N/4, N/4), (N/4 - 1, N/4), (N/4, N/4 - 1), (N/4 - 1, N/4 - 1), (3*N/4, 3*N/4),
+                      (3*N/4 - 1, 3*N/4), (3*N/4, 3*N/4 - 1), (3*N/4 - 1, 3*N/4 - 1)]
+
+# Random Tumor Sites, non-solid
+starting_positions = [(i, j) for i in range(N) for j in range(N) if np.random.random() > 0.9]
+
+print starting_positions
+
+cancer_cells = [CancerCell(x, y, tumor) for (x, y) in starting_positions]
 
 for c in cancer_cells:
     phi[c.x, c.y] = 1.0
 
 
-def dispersion(arg):
-    print "Starting",arg
-    if arg == "ca":
+def dispersion(args):
+    s = args[0]
+    arr = args[1].copy()
+    tum = args[2]
+    print "\tStarting", s, " -- ", tum.size()
+    if s == "ca":
+        _const = Dp * (dt / dx ** 2)
+        for c in tum.cancer_cells():
+            arr[c.x, c.y] = 1.0
         for _ in range(int(1 / float(dt))):
-            phi[1:-1, 1:-1] += Dp * lap(phi) * (dt / dx ** 2)
-            for c in tumor.cancer_cells():
-                phi[c.x, c.y] = 1.0
-        return phi
-    elif arg == "o2":
-        for _ in range(int(1 /float(dt))):
-            o2[1:-1, 1:-1] += Dc * lap(o2) * (dt / dx ** 2)
-            for c in tumor.cancer_cells():
-                o2[c.x, c.y] = np.max(o2[c.x, c.y] - c.consumption() * dt, 0)
-        return o2
+            arr[1:-1, 1:-1] += _const * (arr[2:, 1:-1] + arr[1:-1, 2:] + arr[:-2, 1:-1] + arr[1:-1, :-2] - 4 * arr[1:-1, 1:-1])
+        return arr
+    elif s == "o2":
+        _const = Dc * (dt / dx ** 2)
+        for c in tum.cancer_cells():
+            arr[c.x, c.y] = np.max(arr[c.x, c.y] - c.consumption(), 0)
+        for _ in range(int(1 / float(dt))):
+            arr[1:-1, 1:-1] += _const * (arr[2:, 1:-1] + arr[1:-1, 2:] + arr[:-2, 1:-1] + arr[1:-1, :-2] - 4 * arr[1:-1, 1:-1])
+        return arr
+    print "\t<<Field " + s + " returning>>"
+
 
 p = Pool()
 
@@ -91,19 +113,25 @@ for t in range(50):
     st = time.time()
     print "Iteration:", t
 
-    print np.linalg.norm(o2)
+    print "\t||o2|| =", np.linalg.norm(o2), " ||phi||", np.linalg.norm(phi)
+    print "\tHi/Lo =", np.max(o2), np.min(o2)
     """ Dispersion of the chemo-attractant. """
-    o2, phi = p.map(dispersion, ["o2", "ca"])
-    print np.linalg.norm(o2)
+    o2, phi = p.map(dispersion, [("o2", o2, tumor), ("ca", phi, tumor)])
+    print "\t||o2|| =", np.linalg.norm(o2), " ||phi|| =", np.linalg.norm(phi)
+    print "\tHi/Lo =", np.max(o2), np.min(o2)
 
-    print "Updated fields"
+    print "\tUpdated fields"
 
     for c in tumor.cancer_cells():
         c.move(phi)
         phi[c.x, c.y] = 1.0
 
+    print "\tDone moving"
+
     for c in tumor.cancer_cells():
         c.life_cycle(o2)
+
+    print "\tDone life-cycling"
 
     plotit(t)
 
