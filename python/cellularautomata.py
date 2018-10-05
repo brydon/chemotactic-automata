@@ -138,8 +138,6 @@ if __name__ == "__main__":
         """ Disperse Chemo-attractant """
         Nt = int(1/float(cancer.dt))
 
-        Nt = 1000
-
         _const = cancer.Dp * cancer.dt / (cancer.dx ** 2)
 
         for _x in [Nt/4, Nt/4, Nt/4, Nt-3*(Nt/4)]:
