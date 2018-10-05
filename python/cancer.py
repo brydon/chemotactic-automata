@@ -2,25 +2,23 @@ import numpy as np
 
 D = 1       # migration strength
 mu = 1      # chemo-tactic strengh
+gamma = 1   # 1 or 0, turns on/off the GWN term.
 
 N = 120
 dx = 1./N
-L = N*(0.0025) # [#cells]*[cm/cell]
+L = N*0.0025  # [#cells]*[cm/cell]
 
-tau_by_l = 16 * (3600) / ((L) ** 2)
-
+tau_by_l = 16 * 3600 / (L ** 2)
 Dp = tau_by_l * (10 ** (-5))
-
-dt = 0.1 * (dx ** 2 /(4*Dp))
-
+dt = 0.1 * (dx ** 2 / (4*Dp))
 
 
-def single_lap(x, i, j, dx=1):
-    return (x[i + 1, j] + x[i - 1, j] + x[i, j + 1] + x[i, j - 1] - 4 * x[i, j]) / (dx ** 2)
+def single_lap(x, i, j, _dx=1):
+    return (x[i + 1, j] + x[i - 1, j] + x[i, j + 1] + x[i, j - 1] - 4 * x[i, j]) / (_dx ** 2)
 
 
-def lap(x, dx=1):
-    return (x[2:, 1:-1] + x[1:-1, 2:] + x[:-2, 1:-1] + x[1:-1, :-2] - 4 * x[1:-1, 1:-1]) / (dx ** 2)
+def lap(x, _dx=1):
+    return (x[2:, 1:-1] + x[1:-1, 2:] + x[:-2, 1:-1] + x[1:-1, :-2] - 4 * x[1:-1, 1:-1]) / (_dx ** 2)
 
 
 class Tumor:
@@ -65,7 +63,8 @@ class CancerCell:
         self.dead = False
         self.proliferating = False
 
-    def consumption(self):
+    @staticmethod
+    def consumption():
         return 0.57
 
     def mitosis(self):
@@ -87,7 +86,7 @@ class CancerCell:
             return True
         return False
 
-    def life_cycle(self, o2=None, thresh=0.1):
+    def life_cycle(self):
         self.age += 1
         self.proliferating = self.mitosis()
 
@@ -102,12 +101,12 @@ class CancerCell:
         """
 
         if self.x == 0 or self.x == phi.shape[0] - 1 or self.y == 0 or self.y == phi.shape[1] - 1:
-            return self.x, self.y # Bdary conditions
+            return self.x, self.y  # Bdary conditions
 
         _const = dt/(dx**2)
 
-        gamma = np.random.randn()
-        noise_term = gamma*dt/(2.*dx*np.sqrt(2*D))
+        _Gamma = np.random.randn()*gamma
+        noise_term = _Gamma*dt/(2.*dx*np.sqrt(2*D))
 
         c_left = (D - mu * 0.25 * (phi[self.x + 1, self.y] - phi[self.x - 1, self.y])) * (dt/dx**2) - noise_term
         c_right = (D + mu * 0.25 * (phi[self.x + 1, self.y] - phi[self.x - 1, self.y])) * (dt/dx**2) + noise_term

@@ -85,11 +85,16 @@ if __name__ == "__main__":
 
     np.set_printoptions(threshold=40*40+1)
 
-    if sys.argv[-1] == "cl" or sys.argv[-1] == "mh":
+    if sys.argv[-1][-3:] == "-nn":
+        cancer.gamma = 0.
+    else:
+        cancer.gamma = 1.
+
+    if sys.argv[-1][:2] == "cl" or sys.argv[-1][:2] == "mh":
         print "Chemotaxis-lo, Migration-hi run"
         cancer.D = mig_hi
         cancer.mu = chem_lo
-    elif sys.argv[-1] == "ch" or sys.argv[-1] == "ml":
+    elif sys.argv[-1][:2] == "ch" or sys.argv[-1][:2] == "ml":
         print "Chemotaxis-hi, Migration-lo run"
         cancer.D = mig_lo
         cancer.mu = chem_hi
@@ -152,6 +157,8 @@ if __name__ == "__main__":
             pik.dump([tumor, phi], f)
 
         log_print("\tdumped in", time.time() - tm)
+
+        log_str += str(time.asctime()) + "\n"
 
         with open('%s_log.txt' % sys.argv[-1], 'a') as f:
             f.write(log_str)
