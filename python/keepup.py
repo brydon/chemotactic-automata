@@ -10,9 +10,7 @@ print "Starting keepup"
 Keep a process up and running
 
 Use it like this:
-./keepup.py ./moran.py r2
---or--
-./keepup.py ./moran.py u2
+./keepup.py ./script.py args
 """
 
 MAX = 100
@@ -30,8 +28,8 @@ if __name__ == "__main__":
         res = p.poll()
         if res is not None:
             if i == MAX - 1: # Counting starts at 0
-                i = 0
-                cmd = ' '.join(sys.argv[1:] + [str(params.pop(0))])
+                print "Should be done"
+                break
             else:
                 i += 1
             p = start_subprocess()
