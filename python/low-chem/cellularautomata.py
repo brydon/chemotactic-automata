@@ -152,7 +152,7 @@ for t in range(cur_done + 1, num_steps):
     print "\tlife cycled in", time.time() - tm
     tm = time.time()
 
-    with open('out_dat_frame_%03d.dat' % t, 'wb') as f:
+    with open('out_dat_frame_' + str(t) + '.dat', 'wb') as f:
         pik.dump([tumor, phi], f)
 
     print "\tdumped in", time.time() - tm

@@ -1,6 +1,6 @@
 import numpy as np
 
-D = 1       # migration strength
+D = .1       # migration strength
 mu = 1      # chemo-tactic strengh
 
 N = 120
