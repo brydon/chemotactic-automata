@@ -1,4 +1,5 @@
 import numpy as np
+import time
 
 D = 1       # migration strength
 mu = 1      # chemo-tactic strengh
@@ -25,6 +26,7 @@ class Tumor:
     def __init__(self):
         self.cells = {}
         self.next_id = 0
+        self.tid = time.time()
 
     def age(self):
         for cell in self.cells:
@@ -73,7 +75,7 @@ class CancerCell:
             potential_spots = ((self.x+1, self.y), (self.x-1, self.y), (self.x, self.y+1), (self.x, self.y-1))
 
             for spot in potential_spots:
-                if not self.tumor.cancer_at(spot[0], spot[1]) and 0 <= spot[0] < 400 and 0 <= spot[1] < 400:
+                if not self.tumor.cancer_at(spot[0], spot[1]) and 0 <= spot[0] < N and 0 <= spot[1] < N:
                     free_spots.append(spot)
 
             if len(free_spots) == 0:
@@ -82,13 +84,16 @@ class CancerCell:
             new_spot = free_spots[np.random.randint(0, len(free_spots))]
 
             CancerCell(new_spot[0], new_spot[1], self.tumor)
-            self.tumor.add(self)
+
             return True
         return False
 
     def life_cycle(self):
+        if self.dead:
+            return False
         self.age += 1
         self.proliferating = self.mitosis()
+        return self.proliferating
 
     def die(self):
         self.dead = True

@@ -19,6 +19,12 @@ import os
 
 log_str = ""
 
+if os.path.isdir(sys.argv[-2]):
+    os.chdir(sys.argv[-2])
+else:
+    os.mkdir(sys.argv[-2])
+    os.chdir(sys.argv[-2])
+
 
 def initialise_tumor(_tumor, _phi):
     # Single, central solid tumour site
@@ -48,7 +54,7 @@ def scale_down(a, fact=5):
     return b
 
 
-def read_last_run(_tumor, _phi):
+def read_last_run():
     dat_files = [x for x in os.listdir(os.getcwd()) if x.endswith(".dat") and x.startswith(sys.argv[-1])]
     dat_files.sort()
 
@@ -64,7 +70,9 @@ def read_last_run(_tumor, _phi):
         _cur_done = int(fn[-underscore:dot])
 
         with open(fn, 'rb') as _f:
-            [_tumor, _phi] = pik.load(_f)
+            _tum, _ph = pik.load(_f)
+
+        return (_cur_done, _tum, _ph)
 
     return _cur_done
 
@@ -110,13 +118,15 @@ if __name__ == "__main__":
 
     initialise_tumor(tumor, phi)
 
-    cur_done = read_last_run(tumor, phi)
+    cur_done = read_last_run()
+
+    if cur_done != -1:
+        cur_done, tumor, phi = cur_done
 
     print scale_down(phi, 10)
 
     for t in range(cur_done + 1, num_steps):
-        log_str = ""
-        log_print("Frame", t)
+        log_print("Frame", t, len(tumor.cancer_cells()))
 
         if len(tumor.cancer_cells()) == 0:
             break
@@ -127,6 +137,8 @@ if __name__ == "__main__":
         tm = time.time()
         """ Disperse Chemo-attractant """
         Nt = int(1/float(cancer.dt))
+
+        Nt = 1000
 
         _const = cancer.Dp * cancer.dt / (cancer.dx ** 2)
 
