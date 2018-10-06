@@ -1,0 +1,500 @@
+Frame 0 8
+	dispersed in 48.2140748501
+	life cycled in 0.000550031661987
+	dumped in 0.0170359611511
+Fri Oct  5 19:08:54 2018
+Frame 1 16
+	dispersed in 45.1548850536
+	life cycled in 0.00219106674194
+	dumped in 0.0170118808746
+Fri Oct  5 19:09:39 2018
+Frame 2 32
+	dispersed in 46.2285511494
+	life cycled in 0.00188183784485
+	dumped in 0.010174036026
+Fri Oct  5 19:10:26 2018
+Frame 3 56
+	dispersed in 45.5158140659
+	life cycled in 0.00323796272278
+	dumped in 0.023490190506
+Fri Oct  5 19:11:12 2018
+Frame 4 88
+	dispersed in 46.4767260551
+	life cycled in 0.00572919845581
+	dumped in 0.0242989063263
+Fri Oct  5 19:11:59 2018
+Frame 5 128
+	dispersed in 45.8819050789
+	life cycled in 0.00888204574585
+	dumped in 0.123932123184
+Fri Oct  5 19:12:45 2018
+Frame 6 176
+	dispersed in 45.2984521389
+	life cycled in 0.0134479999542
+	dumped in 0.13423204422
+Fri Oct  5 19:13:31 2018
+Frame 7 232
+	dispersed in 47.2603590488
+	life cycled in 0.0191819667816
+	dumped in 0.039568901062
+Fri Oct  5 19:14:19 2018
+Frame 8 298
+	dispersed in 46.7589600086
+	life cycled in 0.0283970832825
+	dumped in 0.0463891029358
+Fri Oct  5 19:15:06 2018
+Frame 9 370
+	dispersed in 46.5108089447
+	life cycled in 0.047730922699
+	dumped in 0.0481569766998
+Fri Oct  5 19:15:53 2018
+Frame 10 450
+	dispersed in 45.4275200367
+	life cycled in 0.0647478103638
+	dumped in 0.0478410720825
+Fri Oct  5 19:16:39 2018
+Frame 11 539
+	dispersed in 45.6368100643
+	life cycled in 0.0760898590088
+	dumped in 0.0293509960175
+Fri Oct  5 19:17:26 2018
+Frame 12 635
+	dispersed in 46.1765608788
+	life cycled in 0.0997519493103
+	dumped in 0.06077003479
+Fri Oct  5 19:18:12 2018
+Frame 13 739
+	dispersed in 45.8896589279
+	life cycled in 0.126228809357
+	dumped in 0.0682380199432
+Fri Oct  5 19:18:59 2018
+Frame 14 851
+	dispersed in 46.8125910759
+	life cycled in 0.162717819214
+	dumped in 0.107553005219
+Fri Oct  5 19:19:47 2018
+Frame 15 971
+	dispersed in 45.5862700939
+	life cycled in 0.205543041229
+	dumped in 0.0840330123901
+Fri Oct  5 19:20:33 2018
+Frame 16 1099
+	dispersed in 46.5223040581
+	life cycled in 0.254301071167
+	dumped in 0.0859019756317
+Fri Oct  5 19:21:21 2018
+Frame 17 1235
+	dispersed in 46.1313741207
+	life cycled in 0.310418128967
+	dumped in 0.128047943115
+Fri Oct  5 19:22:08 2018
+Frame 18 1379
+	dispersed in 46.01014781
+	life cycled in 0.535818099976
+	dumped in 0.0618920326233
+Fri Oct  5 19:22:55 2018
+Frame 19 1531
+	dispersed in 46.2084021568
+	life cycled in 0.623757839203
+	dumped in 0.154260873795
+Fri Oct  5 19:23:42 2018
+Frame 20 1691
+	dispersed in 45.7833209038
+	life cycled in 0.763993024826
+	dumped in 0.13164806366
+Fri Oct  5 19:24:30 2018
+Frame 21 1859
+	dispersed in 48.0256359577
+	life cycled in 0.894864082336
+	dumped in 0.148059844971
+Fri Oct  5 19:25:19 2018
+Frame 22 2035
+	dispersed in 46.827737093
+	life cycled in 1.05522608757
+	dumped in 0.196338891983
+Fri Oct  5 19:26:08 2018
+Frame 23 2219
+	dispersed in 47.4428970814
+	life cycled in 1.22155594826
+	dumped in 0.212090015411
+Fri Oct  5 19:26:57 2018
+Frame 24 2411
+	dispersed in 45.9162609577
+	life cycled in 1.41461992264
+	dumped in 0.0934309959412
+Fri Oct  5 19:27:45 2018
+Frame 25 2611
+	dispersed in 45.1416769028
+	life cycled in 1.61774992943
+	dumped in 0.242393016815
+Fri Oct  5 19:28:33 2018
+Frame 26 2819
+	dispersed in 45.4455428123
+	life cycled in 1.86029195786
+	dumped in 0.275701999664
+Fri Oct  5 19:29:21 2018
+Frame 27 3035
+	dispersed in 46.4637961388
+	life cycled in 2.15291404724
+	dumped in 0.210161924362
+Fri Oct  5 19:30:10 2018
+Frame 28 3261
+	dispersed in 46.8166499138
+	life cycled in 2.45865297318
+	dumped in 0.304956912994
+Fri Oct  5 19:31:01 2018
+Frame 29 3494
+	dispersed in 44.5166311264
+	life cycled in 3.20163416862
+	dumped in 0.250679969788
+Fri Oct  5 19:31:49 2018
+Frame 30 3734
+	dispersed in 44.4641389847
+	life cycled in 3.21113204956
+	dumped in 0.345274925232
+Fri Oct  5 19:32:38 2018
+Frame 31 3976
+	dispersed in 45.7100038528
+	life cycled in 3.56170701981
+	dumped in 0.281342983246
+Fri Oct  5 19:33:28 2018
+Frame 32 4216
+	dispersed in 48.3729398251
+	life cycled in 3.9155189991
+	dumped in 0.282352924347
+Fri Oct  5 19:34:21 2018
+Frame 33 4456
+	dispersed in 45.6009459496
+	life cycled in 4.31152796745
+	dumped in 0.314631938934
+Fri Oct  5 19:35:12 2018
+Frame 34 4696
+	dispersed in 45.272454977
+	life cycled in 4.67770004272
+	dumped in 0.312473058701
+Fri Oct  5 19:36:03 2018
+Frame 35 4937
+	dispersed in 45.4872040749
+	life cycled in 5.14637112617
+	dumped in 0.179780006409
+Fri Oct  5 19:36:54 2018
+Frame 36 5177
+	dispersed in 44.603976965
+	life cycled in 5.46958899498
+	dumped in 0.213212013245
+Fri Oct  5 19:37:45 2018
+Frame 37 5417
+	dispersed in 44.9436569214
+	life cycled in 5.94364690781
+	dumped in 0.313577890396
+Fri Oct  5 19:38:37 2018
+Frame 38 5657
+	dispersed in 45.1582410336
+	life cycled in 8.20493197441
+	dumped in 0.29551410675
+Fri Oct  5 19:39:32 2018
+Frame 39 5896
+	dispersed in 47.5190811157
+	life cycled in 8.89712190628
+	dumped in 0.544487953186
+Fri Oct  5 19:40:30 2018
+Frame 40 6136
+	dispersed in 45.6423828602
+	life cycled in 9.43445491791
+	dumped in 0.488597869873
+Fri Oct  5 19:41:26 2018
+Frame 41 6375
+	dispersed in 45.4175729752
+	life cycled in 10.2301330566
+	dumped in 0.529211044312
+Fri Oct  5 19:42:23 2018
+Frame 42 6615
+	dispersed in 46.2932469845
+	life cycled in 10.9145970345
+	dumped in 0.399928092957
+Fri Oct  5 19:43:22 2018
+Frame 43 6854
+	dispersed in 46.2852349281
+	life cycled in 11.5470058918
+	dumped in 0.452378034592
+Fri Oct  5 19:44:21 2018
+Frame 44 7093
+	dispersed in 46.869505167
+	life cycled in 12.5581350327
+	dumped in 0.482120037079
+Fri Oct  5 19:45:22 2018
+Frame 45 7334
+	dispersed in 44.3006858826
+	life cycled in 13.3201601505
+	dumped in 0.481307029724
+Fri Oct  5 19:46:21 2018
+Frame 46 7573
+	dispersed in 44.722630024
+	life cycled in 15.5136620998
+	dumped in 0.350130081177
+Fri Oct  5 19:47:23 2018
+Frame 47 7813
+	dispersed in 49.7715950012
+	life cycled in 15.5622692108
+	dumped in 0.378705978394
+Fri Oct  5 19:48:30 2018
+Frame 48 8055
+	dispersed in 45.0346338749
+	life cycled in 15.4646940231
+	dumped in 0.547962903976
+Fri Oct  5 19:49:32 2018
+Frame 49 8294
+	dispersed in 44.8460519314
+	life cycled in 16.2424490452
+	dumped in 0.578589200974
+Fri Oct  5 19:50:34 2018
+Frame 50 8534
+	dispersed in 46.208739996
+	life cycled in 17.5283050537
+	dumped in 0.638532876968
+Fri Oct  5 19:51:40 2018
+Frame 51 8776
+	dispersed in 45.7453949451
+	life cycled in 17.8841850758
+	dumped in 0.493255853653
+Fri Oct  5 19:52:45 2018
+Frame 52 9017
+	dispersed in 46.8534021378
+	life cycled in 18.7475240231
+	dumped in 0.728367090225
+Fri Oct  5 19:53:52 2018
+Frame 53 9258
+	dispersed in 46.5323719978
+	life cycled in 19.7388939857
+	dumped in 0.658210992813
+Fri Oct  5 19:55:00 2018
+Frame 54 9498
+	dispersed in 44.5094559193
+	life cycled in 20.7407100201
+	dumped in 0.512331962585
+Fri Oct  5 19:56:07 2018
+Frame 55 9739
+	dispersed in 44.5449979305
+	life cycled in 21.5986449718
+	dumped in 0.452929973602
+Fri Oct  5 19:57:15 2018
+Frame 56 9980
+	dispersed in 45.4846901894
+	life cycled in 22.9941301346
+	dumped in 0.731945991516
+Fri Oct  5 19:58:25 2018
+Frame 57 10218
+	dispersed in 46.7312390804
+	life cycled in 23.4259560108
+	dumped in 0.496134996414
+Fri Oct  5 19:59:36 2018
+Frame 58 10459
+	dispersed in 47.5029160976
+	life cycled in 24.4538779259
+	dumped in 0.387887954712
+Fri Oct  5 20:00:50 2018
+Frame 59 10695
+	dispersed in 45.7597310543
+	life cycled in 25.1899728775
+	dumped in 0.506819963455
+Fri Oct  5 20:02:02 2018
+Frame 60 10865
+	dispersed in 45.4905071259
+	life cycled in 26.0053870678
+	dumped in 0.575401067734
+Fri Oct  5 20:03:15 2018
+Frame 61 10987
+	dispersed in 45.585242033
+	life cycled in 26.3506469727
+	dumped in 0.401540994644
+Fri Oct  5 20:04:28 2018
+Frame 62 11105
+	dispersed in 45.5085370541
+	life cycled in 26.5608270168
+	dumped in 0.393940925598
+Fri Oct  5 20:05:42 2018
+Frame 63 11220
+	dispersed in 45.3222868443
+	life cycled in 27.9414310455
+	dumped in 0.873230934143
+Fri Oct  5 20:06:57 2018
+Frame 64 11332
+	dispersed in 46.5935561657
+	life cycled in 28.0653719902
+	dumped in 0.615364074707
+Fri Oct  5 20:08:13 2018
+Frame 65 11442
+	dispersed in 46.5340549946
+	life cycled in 28.0456922054
+	dumped in 0.420377016068
+Fri Oct  5 20:09:30 2018
+Frame 66 11550
+	dispersed in 45.1851379871
+	life cycled in 28.595500946
+	dumped in 0.417936086655
+Fri Oct  5 20:10:45 2018
+Frame 67 11656
+	dispersed in 46.1007831097
+	life cycled in 28.685281992
+	dumped in 0.617869138718
+Fri Oct  5 20:12:02 2018
+Frame 68 11759
+	dispersed in 44.977989912
+	life cycled in 29.1809039116
+	dumped in 0.737461805344
+Fri Oct  5 20:13:18 2018
+Frame 69 11861
+	dispersed in 48.0576190948
+	life cycled in 29.3475029469
+	dumped in 0.608336210251
+Fri Oct  5 20:14:37 2018
+Frame 70 11961
+	dispersed in 46.1481039524
+	life cycled in 30.0313138962
+	dumped in 0.769830942154
+Fri Oct  5 20:15:55 2018
+Frame 71 12059
+	dispersed in 45.2214379311
+	life cycled in 31.0878970623
+	dumped in 0.474658966064
+Fri Oct  5 20:17:13 2018
+Frame 72 12155
+	dispersed in 46.5374929905
+	life cycled in 31.9947199821
+	dumped in 0.851248979568
+Fri Oct  5 20:18:34 2018
+Frame 73 12249
+	dispersed in 46.8263800144
+	life cycled in 32.4090409279
+	dumped in 0.829065084457
+Fri Oct  5 20:19:55 2018
+Frame 74 12341
+	dispersed in 45.2711899281
+	life cycled in 32.0365641117
+	dumped in 0.599725008011
+Fri Oct  5 20:21:14 2018
+Frame 75 12431
+	dispersed in 45.433686018
+	life cycled in 32.48792696
+	dumped in 0.88360118866
+Fri Oct  5 20:22:35 2018
+Frame 76 12519
+	dispersed in 45.1832578182
+	life cycled in 32.2942168713
+	dumped in 0.732758998871
+Fri Oct  5 20:23:54 2018
+Frame 77 12605
+	dispersed in 44.5525269508
+	life cycled in 32.6331291199
+	dumped in 0.447460174561
+Fri Oct  5 20:25:13 2018
+Frame 78 12689
+	dispersed in 45.1777570248
+	life cycled in 33.6998791695
+	dumped in 0.741492986679
+Fri Oct  5 20:26:34 2018
+Frame 79 12771
+	dispersed in 46.9207680225
+	life cycled in 33.9537580013
+	dumped in 0.666038990021
+Fri Oct  5 20:27:57 2018
+Frame 80 12850
+	dispersed in 44.8988280296
+	life cycled in 34.1761739254
+	dumped in 0.445074081421
+Fri Oct  5 20:29:18 2018
+Frame 81 12928
+	dispersed in 46.1131460667
+	life cycled in 35.4677679539
+	dumped in 0.463619947433
+Fri Oct  5 20:30:41 2018
+Frame 82 13003
+	dispersed in 44.6074569225
+	life cycled in 35.2171618938
+	dumped in 0.623053789139
+Fri Oct  5 20:32:03 2018
+Frame 83 13077
+	dispersed in 44.6565499306
+	life cycled in 35.3529160023
+	dumped in 0.600619077682
+Fri Oct  5 20:33:24 2018
+Frame 84 13149
+	dispersed in 45.4029359818
+	life cycled in 35.7805020809
+	dumped in 0.902981996536
+Fri Oct  5 20:34:47 2018
+Frame 85 13218
+	dispersed in 47.3059439659
+	life cycled in 35.8779690266
+	dumped in 0.796214103699
+Fri Oct  5 20:36:13 2018
+Frame 86 13286
+	dispersed in 46.1860671043
+	life cycled in 36.8822228909
+	dumped in 0.65904712677
+Fri Oct  5 20:37:38 2018
+Frame 87 13351
+	dispersed in 46.740249157
+	life cycled in 37.7213749886
+	dumped in 0.668829917908
+Fri Oct  5 20:39:04 2018
+Frame 88 13414
+	dispersed in 45.7382340431
+	life cycled in 36.770622015
+	dumped in 0.78510093689
+Fri Oct  5 20:40:29 2018
+Frame 89 13476
+	dispersed in 45.8529889584
+	life cycled in 37.0264050961
+	dumped in 0.602586984634
+Fri Oct  5 20:41:54 2018
+Frame 90 13536
+	dispersed in 47.3193848133
+	life cycled in 37.6720738411
+	dumped in 0.631145000458
+Fri Oct  5 20:43:21 2018
+Frame 91 13594
+	dispersed in 49.4676861763
+	life cycled in 37.9646940231
+	dumped in 0.927492141724
+Fri Oct  5 20:44:51 2018
+Frame 92 13650
+	dispersed in 45.778044939
+	life cycled in 37.7331590652
+	dumped in 0.487138986588
+Fri Oct  5 20:46:16 2018
+Frame 93 13704
+	dispersed in 46.08497715
+	life cycled in 39.1376140118
+	dumped in 0.780328989029
+Fri Oct  5 20:47:44 2018
+Frame 94 13756
+	dispersed in 45.1978027821
+	life cycled in 38.8239500523
+	dumped in 0.931710958481
+Fri Oct  5 20:49:10 2018
+Frame 95 13806
+	dispersed in 45.3239250183
+	life cycled in 39.2260129452
+	dumped in 0.994112968445
+Fri Oct  5 20:50:36 2018
+Frame 96 13854
+	dispersed in 45.3887779713
+	life cycled in 39.800096035
+	dumped in 0.691209793091
+Fri Oct  5 20:52:04 2018
+Frame 97 13900
+	dispersed in 44.7688751221
+	life cycled in 41.114757061
+	dumped in 0.697134971619
+Fri Oct  5 20:53:31 2018
+Frame 98 13944
+	dispersed in 45.2395617962
+	life cycled in 43.336812973
+	dumped in 0.738992929459
+Fri Oct  5 20:55:01 2018
+Frame 99 13986
+	dispersed in 47.8182840347
+	life cycled in 40.4492070675
+	dumped in 1.01551508904
+Fri Oct  5 20:56:32 2018
