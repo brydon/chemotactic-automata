@@ -3,3 +3,4 @@
 *.bbl
 *.pyc
 papers/
+*.dat

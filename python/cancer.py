@@ -11,7 +11,7 @@ L = N*0.0025  # [#cells]*[cm/cell]
 
 tau_by_l = 16 * 3600 / (L ** 2)
 Dp = tau_by_l * (10 ** (-5))
-dt = 0.1 * (dx ** 2 / (4*Dp))
+dt = 1. * (dx ** 2 / (4*Dp))
 
 
 def single_lap(x, i, j, _dx=1):
